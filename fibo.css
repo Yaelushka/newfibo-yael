@@ -1,0 +1,95 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+body{
+    background-color: rgb(224, 224, 224);
+    font-family: "inter", serif;
+  
+
+}
+
+.header{
+    background-color: #8540F5;
+    height: 10vh;
+    display: flex;
+    gap:30px;
+    align-items: center;    
+}
+h3{
+    font-size: 20;
+    color: white;
+    margin-left: 20px;
+}
+.home{
+    font-size: 16;
+    color: white;
+}
+.wall{
+    display: flex;
+    justify-content: center;
+}
+.calcwindow{
+    background-color: white;
+    height: 180px;
+    width: 550px;
+    margin-top: 80px;
+    border-radius: 10px; 
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px;
+
+}
+
+.linewindow{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.bold{ font-weight: 600;}
+
+.prompt{
+    height: 23px;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid rgb(182, 181, 181) ;    
+}
+.reset{
+    border: 1px solid  #8540F5;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    gap:5px;
+
+}
+.purple{
+    color: #8540F5;
+    font-weight: 600;
+    font-size: 12px;
+}
+.flexit{
+    display: flex;
+    gap:10px;
+    
+}
+.number{
+  display: flex;  
+  font-size: 32px; 
+  font-weight: 600; 
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
+.loading{
+    margin-top: 15px;
+    width: 1em;
+    display:none
+}
