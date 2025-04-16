@@ -1,47 +1,57 @@
 const result = document.querySelector("#result");
-const userNumber =document.getElementById("input").value
-const loadingElement = document.querySelector(".loading");
+const input =document.getElementById("input");
+const loadingElement = document.querySelector("#loading");
 const resetBtn= document.querySelector(".reset");
 
-resetBtn.addEventListener("click",function(){
-input.value= " "});
 
-userNumber.addEventListener("blur", (keyUp) => { 
-   //?result.innerHTML = FibNum.number;     
+
+input.addEventListener("change", function() { 
+   displayResult ()   
 })
-onblur = (keyUp) =>{};
+//onblur = (keyUp) =>{};
 
 
 
 function showLoading(isShow){
-   loadingElement.classList.toggle("hidden", !isShow) 
+  loadingElement.classList.toggle("hidden", !isShow) 
 }
 
-function showError(message){
-   console.log("errrrrror")
-}
 
-async function searchFibNum(){  
+async function searchFibNum(x){ 
+   
+   if(input.value>20 ){
+      console.log("Please enter a number lower than 20")
+   }
    try{
       showLoading(true);
-    
+      
      const Response = await 
-     fetch ("http://localhost:3000/results");
+     fetch (`http://localhost:3000/calculate/${x}`);
      console.log({Response});
 
    if (!Response.ok){
       throw new Error ("Something went wrong...")
+      
    }
-   const FibNum= await Response.json()
-   result.innerHTML = FibNum.number;
+   const data = await Response.json();
+   result.textContent = data.result;
+  
+   
    }  catch(err){
-      showError(err.message)
-   }
-   finally{ showLoading(false)}  
+      console.log("errrror")   }
+   finally{ showLoading(false)
+      }  
    
 }
+function displayResult (){
+   //const num = parseInt(input.value);
+   searchFibNum(input.value);
+}
 
-
+resetBtn.addEventListener("click",function(){
+   input.value= " "
+   result.textContent = ""
+});
 
 
 

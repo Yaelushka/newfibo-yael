@@ -88,8 +88,12 @@ h3{
   margin-top: 10px;
 }
 
-.loading{
+#loading{
     margin-top: 15px;
     width: 1em;
-    display:none
+    rotate: 360deg;
+}
+
+.hidden{
+    display: none;
 }
