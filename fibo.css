@@ -51,11 +51,18 @@ h3{
 
 .bold{ font-weight: 600;}
 
-.prompt{
+.input{
     height: 23px;
     width: 50px;
     border-radius: 5px;
-    border: 1px solid rgb(182, 181, 181) ;    
+    border: 1px solid rgb(182, 181, 181) ;  
+    padding-left: 8px;  
+}
+
+.invalid{
+
+border-color: red;
+box-shadow: 3px red;
 }
 .reset{
     border: 1px solid  #8540F5;
@@ -76,6 +83,7 @@ h3{
 .flexit{
     display: flex;
     gap:10px;
+    width: 100%;
     
 }
 .number{
@@ -92,6 +100,22 @@ h3{
     margin-top: 15px;
     width: 1em;
     rotate: 360deg;
+}
+
+
+.error{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 35px;
+    width: 520px;
+    border-color: 2px red;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    color: hsl(0, 73%, 28%);
+    padding: 10px 20px 10px 20px;
+    background-color: rgb(255, 204, 204);  
 }
 
 .hidden{
