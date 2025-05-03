@@ -3,10 +3,16 @@ const input =document.getElementById("input");
 const loadingElement = document.querySelector("#loading");
 const resetBtn= document.querySelector(".reset");
 const errorElement = document.querySelector("#error");
+let resultList = document.querySelector(".resultList");
+
+let savedItems= JSON.parse(localStorage.getItem("savedItems")) || [];
+console.log({savedItems});
+
+fetchPastResults()
 
 
 input.addEventListener("change", function() { 
-  displayResult ()   
+  displayResult () 
 })
  
 function showLoading(isShow){
@@ -35,20 +41,23 @@ async function searchFibNum(x){
 
    if (!Response.ok){
       throw new Error ("Something went wrong...")
-      
    }
    
    const data = await Response.json();
    console.log(data.result)
    result.textContent = data.result;
-   
-   
-   }  catch(err){
-      console.log("errrror")   }
-   finally{ showLoading(false)
-      }  
-   
-}
+
+   }
+   catch(err){
+      console.log("errrror") }
+      finally{ showLoading(false)
+        if (!errorElement.textContent) {
+          addListItem(input.value, result.textContent);
+        }
+        }
+      
+     }
+
 function displayResult (){
 
    input.style.border = "";
@@ -79,10 +88,8 @@ function displayResult (){
       hideError();
       searchFibNum(input.value);
       
-}
-   }
-  
-;
+      
+} };
 
 
 resetBtn.addEventListener("click",function(){
@@ -94,6 +101,62 @@ resetBtn.addEventListener("click",function(){
 
    
 });
+
+
+
+ async function fetchPastResults(){ 
+    try{
+      showLoading(true);
+
+      const Response = await fetch ("http://localhost:3000/results");
+      console.log({Response});
+      if (!Response.ok) throw new Error ("Something went wrong..."); 
+         return await Response.json();
+      
+    }  catch(err){
+       console.log("nope!");
+       return [];
+         }
+    finally{ showLoading(false)
+      
+       }     
+    };
+
+    function addListItem(number, result){
+        const li = document.createElement("li");
+        const now = new Date();
+        const dateTimeString = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+        li.innerHTML = `The Fibonacci of <span class="bold">${number}</span> is <span class="bold">${result} </span>
+           <span style="float: right; margin-left: 10px;">${dateTimeString}</span>`;
+        resultList.appendChild(li);
+      
+      saveListItems();
+      }
+  
+ function saveListItems(){   
+   let listItems=[];
+   console.log(resultList);
+   for(let i = 0; i < resultList.children.length; i++){
+   listItems.push(resultList.children[i].innerHTML);
+   }
+console.log (listItems)
+localStorage.setItem("resultsList", JSON.stringify(listItems));
+
+}   
+function loadListItems(){
+   const storedResults = localStorage.getItem("resultsList");
+   if (storedResults) {
+   const resultsArray = JSON.parse(storedResults);
+   resultsArray.forEach((itemText) => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = itemText;
+    resultList.appendChild(listItem);
+   });
+   }
+   
+   }
+loadListItems();
+
 
 
 
