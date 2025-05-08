@@ -7,8 +7,7 @@ let resultList = document.querySelector(".resultList");
 
 let savedItems= JSON.parse(localStorage.getItem("savedItems")) || [];
 console.log({savedItems});
-
-fetchPastResults()
+let checkBox= document.getElementById("checkbox");
 
 
 input.addEventListener("change", function() { 
@@ -32,7 +31,7 @@ function hideError(){
 
 
 async function searchFibNum(x){ 
-  
+       
    try{
       showLoading(true);
      const Response = await 
@@ -54,9 +53,9 @@ async function searchFibNum(x){
         if (!errorElement.textContent) {
           addListItem(input.value, result.textContent);
         }
-        }
+        } 
       
-     }
+     };
 
 function displayResult (){
 
@@ -86,7 +85,12 @@ function displayResult (){
   
    else {
       hideError();
-      searchFibNum(input.value);
+      if(checkBox.checked){
+      searchFibNum(input.value);}
+      else{
+         result.innerHTML=newFib[input.value]
+
+      }
       
       
 } };
@@ -104,7 +108,8 @@ resetBtn.addEventListener("click",function(){
 
 
 
- async function fetchPastResults(){ 
+ async function fetchPastResults(){
+   if(checkBox.checked){
     try{
       showLoading(true);
 
@@ -120,9 +125,10 @@ resetBtn.addEventListener("click",function(){
     finally{ showLoading(false)
       
        }     
-    };
+    }};
 
     function addListItem(number, result){
+      if(checkBox.checked){
         const li = document.createElement("li");
         const now = new Date();
         const dateTimeString = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
@@ -131,7 +137,7 @@ resetBtn.addEventListener("click",function(){
         resultList.appendChild(li);
       
       saveListItems();
-      }
+      }};
   
  function saveListItems(){   
    let listItems=[];
@@ -160,20 +166,19 @@ loadListItems();
 
 
 
-//function fibonacci(n){
-//    const fib= [0,1]; 
-//    for (let i=2; i<n; i++){
-//       a = fib[i-1];
-//       b = fib[i-2];
-//       fib.push(a+b);
-        
-//    }
+function fibonacci(n){
+   const fib= [0,1]; 
+    for (let i=2; i<n; i++){
+       a = fib[i-1];
+       b = fib[i-2];
+       fib.push(a+b);    
+    };
     
-//   return fib;
-//}
+   return fib;
+};
 
-//console.log(fibonacci(20));
+console.log(fibonacci(20));
 
-//const newFib = fibonacci(21)
+const newFib = fibonacci(21)
 
 
