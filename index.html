@@ -38,9 +38,16 @@
         <div id="error" class="hidden error"></div>
  </div>
         <div class="bottom-result-window">
-        <h1>Results</h1>
+            <div class="flexit2" ><h1>Results</h1>
+                <div class="flexit3">
+                    <div class="flexit"><input type="radio" id="dateAsc" name="sortOrder" value="asc" onclick="sortResults()"><label for="dateAsc">Date Asc</label></div>
+                    <div class="flexit"><input type="radio" id="dateDesc" name="sortOrder" value="desc" onclick="sortResults()"><label for="dateDesc">Date Desc</label></div>
+                </div>
+            </div>
+           
+        
         <img class="hidden"  width: 1em id="loading" src="./pic/spinner-primary.png"/>
-        <ul class="resultList"></ul>
+        <ul class="resultList"></ul></div>
         </div>
 
     

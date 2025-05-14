@@ -23,6 +23,22 @@ h3{
     color: white;
     margin-left: 20px;
 }
+
+input[type="checkbox"]{
+    accent-color: rgb(139, 60, 234);
+
+    
+}
+input[type="radio"]{
+    accent-color: rgb(139, 60, 234);
+    
+}
+
+label{
+    font-size: 12px;
+}
+
+
 .home{
     font-size: 16;
     color: white;
@@ -85,9 +101,25 @@ box-shadow: 3px red;
 .flexit{
     display: flex;
     gap:10px;
-    width: 100%;
+    width: 300px;
+    align-items: center;
     
 }
+.flexit2{
+    display: flex;
+    width:100%;
+    gap: 30%;
+}
+.flexit3{
+    display: flex;
+    align-self: center;
+    gap: 10px;
+    justify-content: start;
+    width: 50%;
+   
+}
+
+
 .number{
   display: flex;  
   font-size: 32px; 
@@ -147,10 +179,10 @@ box-shadow: 3px red;
 
 
 
-#chek-box{
+#checkbox{
     height: 10px;
     width: 10px;
     border-radius: 3px;
-    border: 1px solid #8540F5;
-    
-}
+    border: 1px solid #8540F5;       
+} 
+
